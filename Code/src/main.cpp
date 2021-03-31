@@ -1,8 +1,8 @@
 
 
 /*Example sketch to control a stepper motor with A4988 stepper motor driver and Arduino without a library. More info: https://www.makerguides.com */
-#include <Servo.h>
 #include <Arduino.h>
+#include <Servo.h>
 
 Servo monServo;
 
@@ -16,29 +16,7 @@ Servo monServo;
 #define button A0 //do pull up
 #define led A1
 
-void setup() {
-  // Declare pins as output:
-  pinMode(stepPin, OUTPUT);
-  pinMode(dirPin, OUTPUT);
-  pinMode(led,OUTPUT);
-  monServo.attach(servoPin);
-}
-
-void loop() {
-  // Set the spinning direction clockwise:
-  digitalWrite(dirPin, HIGH);
-  digitalWrite(led,LOW);
-  delay(500);
-  digitalWrite(led,HIGH);
-  // Spin the stepper motor 1 revolution slowly:
-  for (int i = 0; i < stepsPerRevolution; i++) {
-    // These four lines result in 1 step:
-    digitalWrite(stepPin, HIGH);
-    delayMicroseconds(2000);
-    digitalWrite(stepPin, LOW);
-    delayMicroseconds(2000);
-  }
-
+void servo(){
  for (int position = 0; position <=180; position ++){ // on crée une variable position qui prend des valeurs entre 0 à 180 degrés
         monServo.write(position);  // le bras du servomoteur prend la position de la variable position
         delay(15);  // on attend 15 millisecondes
@@ -48,11 +26,35 @@ void loop() {
         monServo.write(position);  // le bras du servomoteur prend la position de la variable position
         delay(15);  // le bras du servomoteur prend la position de la variable position
     }
-  delay(1000);
+}
 
+void led_switch(int state){
+  if (state==1) {
+    digitalWrite(led,HIGH);
+  }
+  if (state==0) {
+    digitalWrite(led,LOW);
+  }
+  else{
+    digitalWrite(led,HIGH);
+    delay(200);
+    digitalWrite(led,LOW);
+  }
+}
+
+void stepper(){
+  // Set the spinning direction clockwise:
+  digitalWrite(dirPin, HIGH);
+  // Spin the stepper motor 1 revolution slowly:
+  for (int i = 0; i < stepsPerRevolution; i++) {
+    // These four lines result in 1 step:
+    digitalWrite(stepPin, HIGH);
+    delayMicroseconds(2000);
+    digitalWrite(stepPin, LOW);
+    delayMicroseconds(2000);
+  }
   // Set the spinning direction counterclockwise:
   digitalWrite(dirPin, LOW);
-
   // Spin the stepper motor 1 revolution quickly:
   for (int i = 0; i < stepsPerRevolution; i++) {
     // These four lines result in 1 step:
@@ -91,4 +93,30 @@ void loop() {
   }
 
   delay(1000);
+}
+
+void setup() {
+  // Declare pins as output:
+  pinMode(stepPin, OUTPUT);
+  pinMode(dirPin, OUTPUT);
+  pinMode(led,OUTPUT);
+  pinMode(button,INPUT);
+  int button_state = HIGH ;
+  monServo.attach(servoPin);
+  led_switch(2);
+  Serial.begin(9600);
+  Serial.print("Hello !");
+}
+
+void loop() {
+  int button_state = digitalRead(button);
+  Serial.print(button_state);
+  // if (button_state == 1) {
+  //   led_switch(0);
+  //   servo();
+  // }
+  // else {
+  //   led_switch(1);
+  //   stepper();
+  // }
 }
