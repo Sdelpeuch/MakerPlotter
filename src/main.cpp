@@ -1,32 +1,8 @@
 
 
 /*Example sketch to control a stepper motor with A4988 stepper motor driver and Arduino without a library. More info: https://www.makerguides.com */
-#include <Arduino.h>
 #include <Servo.h>
-
-Servo monServo;
-
-// Define stepper motor connections and steps per revolution:
-#define dirPin 2
-#define dirPin2 13
-#define stepPin 4
-#define stepPin2 12
-#define stepsPerRevolution 200
-#define servoPin 5 //3 5 6 9 10 11
-#define button A0 //do pull up
-#define led A1
-
-void servo(){
- for (int position = 0; position <=180; position ++){ // on crée une variable position qui prend des valeurs entre 0 à 180 degrés
-        monServo.write(position);  // le bras du servomoteur prend la position de la variable position
-        delay(15);  // on attend 15 millisecondes
-    }
-
-    for (int position = 180; position >=0; position --){ // cette fois la variable position passe de 180 à 0°
-        monServo.write(position);  // le bras du servomoteur prend la position de la variable position
-        delay(15);  // le bras du servomoteur prend la position de la variable position
-    }
-}
+#include "drawer.h"
 
 void led_switch(int state){
   if (state==1) {
@@ -95,28 +71,23 @@ void stepper(){
   delay(1000);
 }
 
+Drawer* drawer;
+
 void setup() {
   // Declare pins as output:
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
   pinMode(led,OUTPUT);
-  pinMode(button,INPUT);
-  int button_state = HIGH ;
-  monServo.attach(servoPin);
   led_switch(2);
   Serial.begin(9600);
-  Serial.print("Hello !");
+  Board board = generateBoard(Little);
+  Control control(board, board.getInitial(), 0.02);
+  drawer = new Drawer(control);
 }
 
 void loop() {
-  int button_state = digitalRead(button);
-  Serial.print(button_state);
-  // if (button_state == 1) {
-  //   led_switch(0);
-  //   servo();
-  // }
-  // else {
-  //   led_switch(1);
-  //   stepper();
-  // }
+    led_switch(1);
+    drawer->draw();
+    delay(500);
+    led_switch(0);
 }
