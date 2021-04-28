@@ -1,7 +1,3 @@
-//
-// Created by sedelpeuch on 21/04/2021.
-//
-
 #include "drawer.h"
 
 Servo penServo;

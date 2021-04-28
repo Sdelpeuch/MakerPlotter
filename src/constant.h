@@ -6,11 +6,12 @@
 #define MAKERPLOTTER_CONSTANT_H
 // Define stepper motor connections and steps per revolution:
 
-#define dirPin 2
-#define dirPin2 13
-#define stepPin 4
-#define stepPin2 12
+#define dirPinLeft 13
+#define dirPinRight 2
+#define stepPinLeft 12
+#define stepPinRight 4
 #define stepsPerRevolution 200
+#define stepperResolution 0.04
 #define penPin 5 //3 5 6 9 10 11
 #define eraserPin1 9
 #define eraserPin2 10

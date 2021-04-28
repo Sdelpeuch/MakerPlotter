@@ -14,21 +14,32 @@ enum Name Board::getName() {
     return _name;
 }
 
-void Board::computeDeltaRubber(float x, float y) {
-
+float Board::getWidth() const {
+    return _width;
 }
 
-Position Board::getInitial() {
+float Board::getHeight() const {
+    return _height;
+}
+
+const Position &Board::getInitial() const {
     return _initial;
 }
 
-Board generateBoard(Name name){
-    if( name == Little){
-        Position initial(0,0);
-        Board board (name,0.559,0.861,0,0,initial);
+float Board::getA() const {
+    return _a;
+}
+
+float Board::getB() const {
+    return _b;
+}
+
+Board generateBoard(Name name) {
+    if (name == Little) {
+        Position initial(0.2795, 0.430);
+        Board board(name, 0.559, 0.861, -0.065, 0.165, initial);
         return board;
-    }
-    else{
+    } else {
         Serial.print("You don't choose an existing board");
     }
 }

@@ -7,20 +7,23 @@
 
 #include "board.h"
 #include "position.h"
-#include <Vector.h>
+#include "StandardCplusplus.h"
+#include <vector>
 
 class Control {
 private:
     Board _board;
     Position _actual;
-    float _maxStep;
-    void simpleMove(Position objective);
+    const float _maxStep;
+    Position computeRubber(Position objective);
 
 public:
     Control(const Board &board, const Position &actual, float maxStep);
-    void complexMode(const Vector<Position>* path);
+    void complexMove(const std::vector<Position>& path);
     void setActual(const Position &actual);
+    const Position &getActual() const;
     ~Control() = default;
+    void simpleMove(Position objective);
 };
 
 
