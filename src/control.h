@@ -1,14 +1,8 @@
-//
-// Created by sedelpeuch on 17/04/2021.
-//
-
 #ifndef MAKERPLOTTER_CONTROL_H
 #define MAKERPLOTTER_CONTROL_H
 
 #include "board.h"
 #include "position.h"
-#include "StandardCplusplus.h"
-#include <vector>
 
 class Control {
 private:
@@ -19,7 +13,7 @@ private:
 
 public:
     Control(const Board &board, const Position &actual, float maxStep);
-    void complexMove(const std::vector<Position>& path);
+//    void complexMove(const std::vector<Position>& path);
     void setActual(const Position &actual);
     const Position &getActual() const;
     ~Control() = default;

@@ -37,7 +37,7 @@ void Control::simpleMove(Position objective) {
     float m1 = (l1 - l1Origin);
     float m2 = (l2 - l2Origin);
     Serial.print("m1 after compute : ");
-    Serial.print(m1 * stepsPerRevolution / stepperResolution);
+    Serial.print(m1);
     Serial.print("\n m2 after compute : ");
     Serial.print(m2 * stepsPerRevolution / stepperResolution);
     Serial.print("\n");
@@ -82,11 +82,11 @@ void Control::simpleMove(Position objective) {
     this->setActual(objective);
 }
 
-void Control::complexMove(const std::vector<Position>& path) {
-    for (auto &it : path) {
-        simpleMove(it);
-    }
-}
+//void Control::complexMove(const std::vector<Position>& path) {
+//    for (auto &it : path) {
+//        simpleMove(it);
+//    }
+//}
 
 Control::Control(const Board &board, const Position &actual, float maxStep) : _board(board),
                                                                               _actual(computeRubber(actual)),

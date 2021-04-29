@@ -1,7 +1,3 @@
-//
-// Created by sedelpeuch on 17/04/2021.
-//
-
 #ifndef MAKERPLOTTER_POSITION_H
 #define MAKERPLOTTER_POSITION_H
 

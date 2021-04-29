@@ -6,7 +6,7 @@
 #include "position.h"
 
 /**
- * Enumeration containing the identifiers of the different tables of eirlabi
+ * Enumeration containing the identifiers of the different tables of eirlab
  */
 typedef enum Name {
     Red = 0, White = 1, Little = 2

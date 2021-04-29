@@ -1,7 +1,3 @@
-//
-// Created by sedelpeuch on 17/04/2021.
-//
-
 #include "board.h"
 
 Board::Board(Name name, float width, float height, float a, float b, const Position &initial) : _name(name),
