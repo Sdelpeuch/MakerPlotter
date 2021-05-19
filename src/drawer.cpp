@@ -30,12 +30,3 @@ void Drawer::draw(Position** path) {
     pen(false);
     _control.simpleMove({0.279,0.43});
 }
-
-void Drawer::erase(bool activated) {
-    if (activated) {
-        eraserServo.write(60);
-    } else {
-        eraserServo.write(100);
-
-    }
-}

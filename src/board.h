@@ -13,7 +13,7 @@ typedef enum Name {
 } Name;
 
 /**
- *
+ * La classe __board__ définit physiquement un tableau principalement par sa taille et la position initiale du module sur le tableau (classiquement au centre). Les champs ___a__ et ___b__ sont des artéfacts de la première version mécanique, il convient de les mettre à 0 dorénavant. Les tableaux d'eirlab sont préprogrammés, il suffit d'utiliser la méthode __generateBoard(Little)__ pour  obtenir un objet de classe tableau correspondant l'un des petits tableaux d'eirlab.
  */
 class Board {
 private:

@@ -1,10 +1,9 @@
-//
-// Created by sedelpeuch on 21/04/2021.
-//
 
 #ifndef MAKERPLOTTER_CONSTANT_H
 #define MAKERPLOTTER_CONSTANT_H
-// Define stepper motor connections and steps per revolution:
+/**
+ * Define stepper motor connections and steps per revolution:
+ */
 
 #define dirPinLeft 13
 #define dirPinRight 2
@@ -16,6 +15,5 @@
 #define eraserPin 9
 #define button A0 //do pull up
 #define led A1
-#define POINT 50
 
 #endif //MAKERPLOTTER_CONSTANT_H

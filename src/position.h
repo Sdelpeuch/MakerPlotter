@@ -1,6 +1,9 @@
 #ifndef MAKERPLOTTER_POSITION_H
 #define MAKERPLOTTER_POSITION_H
 
+/**
+ * Définit une position c'est à dire un couple (x,y) et associe des longueurs de rubber
+ */
 class Position {
 private:
     float _x;
@@ -15,7 +18,6 @@ public:
     float getL1() const;
     float getL2() const;
     ~Position() = default;
-    static float distance(Position p1, Position p2);
     Position();
 };
 
