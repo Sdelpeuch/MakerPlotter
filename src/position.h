@@ -16,6 +16,8 @@ public:
     float getL1() const;
     float getL2() const;
     ~Position() = default;
+    static float distance(Position p1, Position p2);
+    Position();
 };
 
 

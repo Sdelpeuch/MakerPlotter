@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+skinparam monochrome true
+
+class Board {
+    - const Name _name;
+    - const float _width;
+    - const float _height;
+    - const float _a;
+    - const float _b;
+    - const Position _initial;
+    + Board generateBoard(Name name);
+}
+
+class Control {
+   - Board _board;
+   - Position _actual;
+   - const float _maxStep;
+   + Position computeRubber(Position objective);
+   + void complexMove(const std::vector<Position>& path);
+   + void simpleMove(Position objective);
+}
+
+class Drawer {
+   - Control _control;
+   + void pen(bool activated);
+   + void erase(bool activated);
+   + void draw();
+}
+
+class Position {
+    - float _x;
+    - float _y;
+    - float _l1;
+    - float _l2;
+    + Position(float x, float y);
+}
+
+Position --o Board
+Position --o Control
+Board --o Control
+Control --o Drawer
+
+@enduml

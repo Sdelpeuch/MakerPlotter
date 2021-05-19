@@ -13,7 +13,7 @@ private:
 
 public:
     Control(const Board &board, const Position &actual, float maxStep);
-//    void complexMove(const std::vector<Position>& path);
+    void complexMove(const Position* path);
     void setActual(const Position &actual);
     const Position &getActual() const;
     ~Control() = default;

@@ -11,11 +11,11 @@
 #define stepPinLeft 12
 #define stepPinRight 4
 #define stepsPerRevolution 200
-#define stepperResolution 0.0.032
+#define stepperResolution 0.032
 #define penPin 5 //3 5 6 9 10 11
-#define eraserPin1 9
-#define eraserPin2 10
+#define eraserPin 9
 #define button A0 //do pull up
 #define led A1
+#define POINT 50
 
 #endif //MAKERPLOTTER_CONSTANT_H

@@ -18,68 +18,11 @@ void led_switch(int state){
   }
 }
 
-void stepper(){
-  // Set the spinning direction clockwise:
-  digitalWrite(dirPinLeft, HIGH);
-  // Spin the stepper motor 1 revolution slowly:
-  for (int i = 0; i < stepsPerRevolution; i++) {
-    // These four lines result in 1 step:
-    digitalWrite(stepPinLeft, HIGH);
-    delayMicroseconds(2000);
-    digitalWrite(stepPinLeft, LOW);
-    delayMicroseconds(2000);
-  }
-  // Set the spinning direction counterclockwise:
-  digitalWrite(dirPinLeft, LOW);
-  // Spin the stepper motor 1 revolution quickly:
-  for (int i = 0; i < stepsPerRevolution; i++) {
-    // These four lines result in 1 step:
-    digitalWrite(stepPinLeft, HIGH);
-    delayMicroseconds(1000);
-    digitalWrite(stepPinLeft, LOW);
-    delayMicroseconds(1000);
-  }
-
-  delay(1000);
-
-  // Set the spinning direction clockwise:
-  digitalWrite(dirPinLeft, HIGH);
-
-  // Spin the stepper motor 5 revolutions fast:
-  for (int i = 0; i < 5 * stepsPerRevolution; i++) {
-    // These four lines result in 1 step:
-    digitalWrite(stepPinLeft, HIGH);
-    delayMicroseconds(500);
-    digitalWrite(stepPinLeft, LOW);
-    delayMicroseconds(500);
-  }
-
-  delay(1000);
-
-  // Set the spinning direction counterclockwise:
-  digitalWrite(dirPinLeft, LOW);
-
-  //Spin the stepper motor 5 revolutions fast:
-  for (int i = 0; i < 5 * stepsPerRevolution; i++) {
-    // These four lines result in 1 step:
-    digitalWrite(stepPinLeft, HIGH);
-    delayMicroseconds(500);
-    digitalWrite(stepPinLeft, LOW);
-    delayMicroseconds(500);
-  }
-
-  delay(1000);
-}
-
 Drawer* drawer;
 Control* control;
 
 void setup() {
-  // Declare pins as output:
-  pinMode(stepPinLeft, OUTPUT);
-  pinMode(dirPinLeft, OUTPUT);
-    pinMode(stepPinRight, OUTPUT);
-    pinMode(dirPinRight, OUTPUT);
+
   pinMode(led,OUTPUT);
   led_switch(2);
   Serial.begin(9600);
@@ -92,8 +35,17 @@ void setup() {
 
 void loop() {
     led_switch(1);
-    drawer->draw();
-    Position objective(0.15,0.4305);
-    control->simpleMove(objective);
+    Position firstPath1[] = {{0.2792181584225228, 0.4275262040248698}, {0.2790831313508796, 0.41874607204339126}, {0.27551432956659133, 0.410700830107572}, {0.2700684616935412, 0.40369741850720353}, {0.2647359674607473, 0.3966121575983768}, {0.26363381273202396, 0.38841636486599374}, {0.27089389445609874, 0.38338971573509606}, {0.2790915178625478, 0.38}, {0.28751457771839173, 0.38179186723494674}, {0.29151482187651745, 0.38961512635578704}, {0.2932674600223219, 0.39825139671378457}, {0.29274228511720196, 0.40707773179113205}, {0.29058813285197993, 0.4156412526386404}, {0.2863315524425462, 0.42336070955706995}, {-1.0,-1.0}};
+    Position firstPath2[] = {{0.2393165380124176, 0.44539579686065905}, {0.23316958954553568, 0.43943061541566397}, {0.22920397361050726, 0.43151232534470574}, {0.22900000000000004, 0.42293482065309423}, {0.23562293907302184, 0.41725577630526006}, {0.24432098822532133, 0.4154513691591848}, {0.25324715770455525, 0.41539032284642147}, {0.2620602671996932, 0.41676500334536754}, {0.27009459245954454, 0.42051753516828483}, {0.2759913725557055, 0.4270475283957347}, {0.2690987457321703, 0.42860909131919367}, {0.2608503254690322, 0.43179374824757977}, {0.2537877558935161, 0.4372038014693236}, {0.24656761252282278, 0.4424000609457769}, {-1.0,-1.0}};
+    Position firstPath4[] = {{0.31714900972306714, 0.4435215351502674}, {0.3082641611640708, 0.4442893685260963}, {0.2993666304817631, 0.44365810402640143}, {0.29080762852186526, 0.4412248694482728}, {0.2836816295892431, 0.4360749211908826}, {0.2826833760728813, 0.43055864977149794}, {0.29150511813823465, 0.42952838623747785}, {0.299372059671992, 0.42541236962623813}, {0.30632925447552833, 0.4198648836673832}, {0.31371431795276017, 0.4149316407319962}, {0.32165330386465313, 0.4161968644674699}, {0.3261334930067574, 0.4238279133131176}, {0.329, 0.43215764805951185}, {0.32542444228140416, 0.43982709797855796}, {0.3173902746002747, 0.4434743144569398},{-1.0,-1.0}};
+    Position firstPath3[] = {{0.27467891182420495, 0.48000000000000004}, {0.26739069798138176, 0.47552968525738143}, {0.2642946940111833, 0.467287661646326}, {0.2635554242074799, 0.45848155933638973}, {0.26439582731699335, 0.4496916494097501}, {0.26713012308416734, 0.441292059491504}, {0.27266042497209336, 0.43448330368394045}, {0.2772823135329994, 0.4357348215273993}, {0.27878806072091833, 0.4444046613909976}, {0.2834934464670389, 0.45186430260829985}, {0.28908087718308506, 0.45875816196256863}, {0.29357933574234674, 0.46635223770646045}, {0.29033020448783486, 0.47372117435750544}, {0.2825591400224688, 0.47806011289684675},{-1.0,-1.0}};
+    Position* path[]={firstPath1,firstPath2, firstPath3, firstPath4};
+    drawer->draw(path);
+//    control->complexMove(firstPath1);
+//    control->complexMove(firstPath2);
+//    control->complexMove(firstPath3);
+//    control->complexMove(firstPath4);
+
     led_switch(0);
+    while(1);
 }

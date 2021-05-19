@@ -12,7 +12,7 @@ private:
     void erase(bool activated);
 public:
     Drawer(const Control &control);
-    void draw();
+    void draw(Position** path);
     ~Drawer() = default;
 };
 
