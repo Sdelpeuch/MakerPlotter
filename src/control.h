@@ -4,13 +4,13 @@
 #include "board.h"
 #include "position.h"
 
+
 class Control {
 private:
     Board _board;
     Position _actual;
     const float _maxStep;
     Position computeRubber(Position objective);
-    float interpolate(float x, Position a, Position b);
 
 public:
     Control(const Board &board, const Position &actual, float maxStep);

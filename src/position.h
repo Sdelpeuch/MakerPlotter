@@ -1,7 +1,6 @@
 #ifndef MAKERPLOTTER_POSITION_H
 #define MAKERPLOTTER_POSITION_H
 
-
 class Position {
 private:
     float _x;
