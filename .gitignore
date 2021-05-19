@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+/cmake-build-debug/
+/CMakeLists.txt
+/.pio/
+/.idea/misc.xml
+/.idea/MakerPlotter.iml
+/.idea/vcs.xml
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/workspace.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/modules.xml
