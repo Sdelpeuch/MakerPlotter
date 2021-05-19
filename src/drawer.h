@@ -16,5 +16,7 @@ public:
     ~Drawer() = default;
 };
 
+void aDraw(Drawer* drawer);
+
 
 #endif //MAKERPLOTTER_DRAWER_H
