@@ -19,12 +19,16 @@ void Drawer::pen(bool activated) {
 }
 
 void Drawer::draw(Position** path) {
-    for (int i = 0; i < 4; ++i) {
+    int i = 0;
+    while(path[i]!=nullptr){
+        pen(false);
+        _control.simpleMove(path[i][0]);
         pen(true);
         _control.complexMove(path[i]);
-        pen(false);
-        _control.simpleMove({0.279,0.43});
+        i++;
     }
+    pen(false);
+    _control.simpleMove({0.279,0.43});
 }
 
 void Drawer::erase(bool activated) {
