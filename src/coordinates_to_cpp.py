@@ -2,6 +2,7 @@ import sys
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 
 # Website to export svg to coordinates
 # https://shinao.github.io/PathToPoints/
@@ -103,7 +104,8 @@ paths = offset(paths, 0.279, 0.43, "center")
 
 
 # Plotting the transformation
-colors = ['b', 'r', 'g', 'orange', 'violet', 'magenta', 'grey', 'black']
+viridis = cm.get_cmap('viridis', len(paths))
+colors = viridis(np.linspace(0, 1, len(paths)))
 fig, ax = plt.subplots()
 ax.set_aspect('equal', 'box')
 for p, path in enumerate(paths):

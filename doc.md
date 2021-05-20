@@ -32,9 +32,20 @@ Nous avons enlevé les steppers du coeur de la machine mais aussi le shield. Nou
 
 Voici le nouveau modèle 3d :
 
-![](modele_3d_v2.png)
+![](modele_3d_v2.avi)
 
-Une fois les pièces imprimées et découpées, on 
+Une fois les pièces imprimées et découpées, nous avons fait l'assemblage et avons bien observé que notre problème de centre de gravité n'apparassait plus.
+
+Voici une liste des différents avantages et inconvénients de ce nouveau modèle :
+
+!!! Avantages:
+- Pas de bascule à cause d'un poids trop important
+- Plus esthétique avec un coeur en forme du logo d'eirlab
+
+!!! Inconvénients :
+- Une partie de l'élec se trouve hors du coeur, il y a donc des câbles qui vont se balader.
+
+Nous avons ensuite rajouté un petit boîtier pour intégrer la carte Arduino. 
 
 
 Les différents fichiers permettant de reproduire la mécanique du projet sont disponible ici (utilisation d'une découpeuse laser et d'une imprimante 3D)
